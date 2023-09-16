@@ -32,8 +32,8 @@
                 </a>
             </p>
         </div>
-        <div>
-            <h2 class="module">
+        <div class="module">
+            <h2>
                 Module {{ module.order|add:1 }}: {{ module.title }}
             </h2>
             <h3>Module contents:</h3>
@@ -112,6 +112,26 @@
 
             // send HTTP request
             fetch(moduleOrderUrl, options)
+        });
+    });
+
+    const contentOrderUrl = '{% url 'content_order' %}';
+
+    sortable('#module-contents', {
+        forcePlaceHolderSize: true,
+        placeholderClass: 'placeholder',
+    })[0].addEventListener('sortupdate', function(e) {
+
+        contentOrder = {};
+        var contents = document.querySelectorAll('#module-contents div');
+        contents.forEach(function (content, index) {
+            // update content index 
+            contentOrder[content.dataset.id] = index;
+            // add new order to the HTTP request options
+            options['body'] = JSON.stringify(contentOrder);
+
+            // send HTTP request
+            fetch(contentOrderUrl, options)
         });
     });
 {% endblock %}

@@ -135,7 +135,7 @@ ul.content-types li {
     float:left;
     margin:10px;
     background:#efefef;
-    padding:8px 14px;
+    padding:18px 14px;
 }
 
 .hidden {
@@ -233,9 +233,10 @@ ul#course-modules li:hover {
 }
 
 #module-contents form {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
+
 
 #module-contents input[type=submit] {
     color:#3fad37;
